@@ -15,6 +15,7 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log  --
 START_TIME=$(date +%s)
 $SCRIPT_DIR=$PWD   # for absolute path
 MONGODB_HOST=mongodb.daws86sd.fun
+MYSQL_HOST=mysql.daws86sd.fun
 
 
 mkdir -p $LOGS_FOLDER   # -p checks already directory is there or not, if it's not automatically it create a directory
