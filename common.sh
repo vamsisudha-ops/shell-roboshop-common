@@ -13,7 +13,7 @@ LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log  --> giving full path here 
 START_TIME=$(date +%s)
-$SCRIPT_DIR=$PWD
+$SCRIPT_DIR=$PWD   # for absolute path
 MONGODB_HOST=mongodb.daws86sd.fun
 
 
@@ -55,6 +55,13 @@ nodejs_setup(){
 }
 
 app_setup(){
+    id roboshop &>>$LOG_FILE
+    if [ $? -ne 0]; then
+        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
+        VALIDATE $? "Creating a System User"
+    else 
+        echo -e "User already exist ... $Y SKIPPING $N"
+    fi 
     mkdir -p /app 
     VALIDATE $? "Creating app directory"
 
