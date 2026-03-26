@@ -11,5 +11,4 @@ systemctl start mysqld
 VALIDATE $? "Enabling and Starting MYSQL Server"
 mysql_secure_installation --set-root-pass RoboShop@1 &>>$LOG_FILE
 VALIDATE $? "Setting root password to MYSQL Server"
-
 print_total_time 
