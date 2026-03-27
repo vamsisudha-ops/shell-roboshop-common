@@ -8,7 +8,7 @@ app_setup
 java_setup 
 systemd_setup
 
-dnf install mysql -y 
+dnf install mysql -y &>>$LOG_FILE
 
 mysql -h $MYSQL_HOST -uroot -pRoboShop@1 -e 'use cities' &>>$LOG_FILE
 VALIDATE $? "Checking root user accessing cities schema in MYSQLHOST Server"
