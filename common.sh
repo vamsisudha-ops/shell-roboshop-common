@@ -5,11 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-#if [ $USERID -ne 0 ]; then 
-    #echo "ERROR:: please run this script with root previlege"
-    #exit 1 #failure is other than 0 
-#fi 
-LOGS_FOLDER="/var/log/shell-script"
+LOGS_FOLDER="/var/log/shell-roboshop"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log  --> giving full path here 
 START_TIME=$(date +%s)
