@@ -1,5 +1,5 @@
 #!/bin/bash 
-set -e    ## To exit from the script if any error occurs, if we skip to write Validate statement in the script
+# set -e    ## To exit from the script if any error occurs, if we skip to write Validate statement in the script
 
 source ./common.sh 
 app_name=shipping
