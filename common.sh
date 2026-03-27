@@ -13,7 +13,7 @@ LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log  --> giving full path here 
 START_TIME=$(date +%s)
-$SCRIPT_DIR=$PWD   # for absolute path
+SCRIPT_DIR=$PWD   # for absolute path
 MONGODB_HOST=mongodb.daws86sd.fun
 MYSQL_HOST=mysql.daws86sd.fun
 
