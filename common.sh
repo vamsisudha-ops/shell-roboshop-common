@@ -17,7 +17,6 @@ SCRIPT_DIR=$PWD   # for absolute path
 MONGODB_HOST=mongodb.daws86sd.fun
 MYSQL_HOST=mysql.daws86sd.fun
 
-
 mkdir -p $LOGS_FOLDER   # -p checks already directory is there or not, if it's not automatically it create a directory
 echo "Script started executed at: $(date)" | tee -a $LOG_FILE  #TO APPEND THE ECHO STATEMENT IN LOGS FILE
 
@@ -40,10 +39,8 @@ VALIDATE(){ # funtions receive inputs through args just like shell script args
 nodejs_setup(){
     dnf module disable nodejs -y &>>$LOG_FILE
     VALIDATE $? "Disabling NodeJS"
-
     dnf module enable nodejs:20 -y &>>$LOG_FILE
     VALIDATE $? "Enabling NodeJS 20"
-
     dnf install nodejs -y &>>$LOG_FILE
     VALIDATE $? "Installing NodeJS"
 
@@ -107,6 +104,6 @@ app_restart(){
 
 print_total_time(){
     END_TIME=$(date +%s)
-    TOTAL_TIME=$(( $END_TIME - $START_TIME))
+    TOTAL_TIME=$(( $END_TIME - $START_TIME ))
     echo -e "Script executed in: $Y $TOTAL_TIME Seconds $N"
 }
