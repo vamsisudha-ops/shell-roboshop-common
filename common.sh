@@ -5,10 +5,10 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ $USERID -ne 0 ]; then 
-    echo "ERROR:: please run this script with root previlege"
-    exit 1 #failure is other than 0 
-fi 
+#if [ $USERID -ne 0 ]; then 
+    #echo "ERROR:: please run this script with root previlege"
+    #exit 1 #failure is other than 0 
+#fi 
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log  --> giving full path here 
@@ -27,10 +27,6 @@ check_root() {
     exit 1 #failure is other than 0 
     fi 
 }
-if [ $USERID -ne 0 ]; then 
-    echo "ERROR:: please run this script with root previlege"
-    exit 1 #failure is other than 0 
-fi 
 
 VALIDATE(){ # funtions receive inputs through args just like shell script args
     if [ $1 -ne 0 ]; then
@@ -104,13 +100,13 @@ systemd_setup(){
     VALIDATE $? "Enable $app_name"
 }
 
+app_restart(){
+    systemctl restart $app_name 
+    VALIDATE $? "Restarted $app_name"
+}
+
 print_total_time(){
     END_TIME=$(date +%s)
     TOTAL_TIME=$(( $END_TIME - $START_TIME))
     echo -e "Script executed in: $Y $TOTAL_TIME Seconds $N"
-}
-
-app_restart(){
-    systemctl restart $app_name 
-    VALIDATE $? "Restarted $app_name"
 }
